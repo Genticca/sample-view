@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ ($now.format("yyyy-MM-dd")) }} 뉴스레터</title>
+    <style type="text/css">
+        /* --- 기본 스타일 --- */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+        }
+
+        /* --- 레이아웃 클래스 --- */
+        .email-container {
+            padding: 20px 0;
+            text-align: center;
+        }
+        .main-wrapper {
+            background-color: #ffffff;
+            max-width: 600px;
+            border: 1px solid #dddddd;
+            margin: 0 auto;
+        }
+        .content-cell {
+            padding: 40px 30px;
+        }
+
+        /* --- 콘텐츠 클래스 --- */
+        .main-title {
+            color: #151515;
+            font-size: 24px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .greeting {
+            padding: 20px 0 30px 0;
+            color: #555555;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        
+        /* --- 뉴스 아이템 클래스 --- */
+        .news-item {
+            padding: 20px 0;
+        }
+        .news-title {
+            color: #333333;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .news-summary {
+            padding: 10px 0 15px 0;
+            color: #555555;
+            font-size: 16px;
+            line-height: 24px;
+        }
+        .divider {
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        /* --- 버튼 및 링크 스타일 --- */
+        .button-cell {
+            background-color: #5534FF;
+            border-radius: 5px;
+            text-align: center;
+        }
+        /* 버튼 안의 a 태그 스타일 (요청하신 href 속성이 있는 링크 흰색 처리) */
+        a.button-link {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 16px;
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 5px;
+        }
+        /* 본문 내 일반 텍스트 링크 스타일 (흰색 배경에서 잘 보이도록) */
+        .content-cell a:not(.button-link) {
+            color: #007bff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+        <tr>
+            <td class="email-container">
+                <table border="0" cellpadding="0" cellspacing="0" width="600" class="main-wrapper">
+                    <tr>
+                        <td class="content-cell">
+                            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                <tr>
+                                    <td class="main-title">
+                                        {{ ($now.format("yyyy-MM-dd")) }} 뉴스레터
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="greeting">
+                                        안녕하세요! 이번 주에 전달해 드릴 흥미로운 소식들입니다.
+                                    </td>
+                                </tr>
+                                
+                                <tr>
+                                    <td class="news-item">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr><td class="news-title">{{ $json.output[0].title }}</td></tr>
+                                            <tr><td class="news-summary">{{ $json.output[0].content }}</td></tr>
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr><td class="button-cell"><a href="{{ $json.output[0].url }}" target="_blank" class="button-link">자세히 보기</a></td></tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr><td class="divider"></td></tr>
+
+                                <tr>
+                                    <td class="news-item">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr><td class="news-title">{{ $json.output[1].title }}</td></tr>
+                                            <tr><td class="news-summary">{{ $json.output[1].content }}</td></tr>
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr><td class="button-cell"><a href="{{ $json.output[1].url }}" target="_blank" class="button-link">자세히 보기</a></td></tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                                <tr><td class="divider"></td></tr>
+
+                                <tr>
+                                    <td class="news-item">
+                                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                            <tr><td class="news-title">{{ $json.output[2].title }}</td></tr>
+                                            <tr><td class="news-summary">{{ $json.output[2].content }}</td></tr>
+                                            <tr>
+                                                <td>
+                                                    <table border="0" cellpadding="0" cellspacing="0">
+                                                        <tr><td class="button-cell"><a href="{{ $json.output[2].url }}" target="_blank" class="button-link">자세히 보기</a></td></tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
